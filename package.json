@@ -1,0 +1,41 @@
+{
+  "name": "graphql-resolver-cache",
+  "version": "1.0.0",
+  "description": "Caching for Graphql resolvers",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier  --trailing-comma es5 --single-quote --write src/**/*.js",
+    "lint": "eslint src",
+    "test": "jest",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Intellicode/graphql-resolver-cache.git"
+  },
+  "keywords": [
+    "graphql",
+    "apollo"
+  ],
+  "author": "Tom Hastjarjanto <tom@intellicode.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Intellicode/graphql-resolver-cache/issues"
+  },
+  "homepage": "https://github.com/Intellicode/graphql-resolver-cache#readme",
+  "devDependencies": {
+    "eslint": "^4.4.1",
+    "eslint-config-prettier": "^2.3.0",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.3",
+    "prettier": "^1.5.3"
+  }
+}
