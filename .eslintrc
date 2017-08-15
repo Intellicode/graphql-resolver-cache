@@ -1,9 +1,12 @@
 {
-  "env": {
-    "node": true
+  "globals": { "Promise": true },
+  "parserOptions": {
+    "ecmaVersion": 6
   },
-  "extends": [
-    "eslint:recommended",
-    "prettier"
-  ]
+  "env": {
+    "node": true,
+    "jest": true,
+    "browser": true
+  },
+  "extends": ["eslint:recommended", "prettier"]
 }
