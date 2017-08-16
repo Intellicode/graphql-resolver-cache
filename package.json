@@ -7,6 +7,7 @@
     "format": "prettier  --trailing-comma es5 --single-quote --write src/**/*.js",
     "lint": "eslint src",
     "test": "jest --coverage",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -31,6 +32,7 @@
   },
   "homepage": "https://github.com/Intellicode/graphql-resolver-cache#readme",
   "devDependencies": {
+    "coveralls": "^2.13.1",
     "eslint": "^4.4.1",
     "eslint-config-prettier": "^2.3.0",
     "husky": "^0.14.3",
