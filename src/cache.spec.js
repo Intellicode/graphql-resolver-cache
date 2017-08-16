@@ -12,6 +12,15 @@ describe('cache()', () => {
     };
   });
 
+  describe('errors', () => {
+    it('throws when no resolverCache is configured', () => {
+      const resolver = cache(() => {});
+      expect(() =>
+        resolver(parent, args, { resolverCache: undefined })
+      ).toThrowErrorMatchingSnapshot();
+    });
+  });
+
   describe('hashing', () => {
     it('hashes the root and arguments consistently', () => {
       const resolver = cache(() => {});
