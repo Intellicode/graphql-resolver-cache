@@ -6,7 +6,7 @@ Graphql resolver cache
 
 [![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![BCH compliance][bettercode-image]][bettercode-url] 
 
-Easy wrapper around resolvers to cache results based on root elements and Graphql query arguments.
+Easy wrapper around resolvers to cache results based on root elements and Graphql query arguments. Works best with Apollo Graphql.
 
 # Installation
 
