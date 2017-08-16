@@ -18,8 +18,6 @@ $ npm install graphql-resolver-cache --save
 
 TODO
 
-# List of supported rules
-
 [npm-url]: https://npmjs.org/package/graphql-resolver-cache
 [npm-image]: http://img.shields.io/npm/v/graphql-resolver-cache.svg?style=flat-square
 
