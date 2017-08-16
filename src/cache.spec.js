@@ -1,15 +1,14 @@
-// env jest
-
 const cache = require('./cache');
 
 describe('cache()', () => {
   const parent = { id: 1 };
   const args = { name: 'hello' };
-  let cacheMock;
+  let cacheMock = {};
 
-  beforeAll(() => {
+  beforeEach(() => {
     cacheMock = {
       get: jest.fn(() => Promise.resolve()),
+      set: jest.fn((key, result) => Promise.resolve(result)),
     };
   });
 
@@ -27,7 +26,7 @@ describe('cache()', () => {
     });
   });
 
-  describe('cache retrieval', () => {
+  describe('cache behavior', () => {
     const cachedValue = 'cached';
     const uncachedValue = 'uncached';
     const resolver = cache(() => uncachedValue);
@@ -37,18 +36,47 @@ describe('cache()', () => {
 
       expect.assertions(1);
 
-      resolver(parent, args, { resolverCache: cacheMock }).then(actual => {
+      return resolver(parent, args, {
+        resolverCache: cacheMock,
+      }).then(actual => {
         expect(actual).toEqual(cachedValue);
+      });
+    });
+
+    it('does not re-cache cached value', () => {
+      cacheMock.get = jest.fn(() => Promise.resolve(cachedValue));
+
+      expect.assertions(1);
+
+      return resolver(parent, args, {
+        resolverCache: cacheMock,
+      }).then(() => {
+        expect(cacheMock.set).toHaveBeenCalledTimes(0);
       });
     });
 
     it('returns uncached value if the cache returns undefined', () => {
       cacheMock.get = jest.fn(() => Promise.resolve(undefined));
 
+      expect.assertions(2);
+
+      return resolver(parent, args, {
+        resolverCache: cacheMock,
+      }).then(actual => {
+        expect(actual).toEqual(uncachedValue);
+        expect(cacheMock.set).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    it('sets uncached value in cache', () => {
+      cacheMock.get = jest.fn(() => Promise.resolve(undefined));
+
       expect.assertions(1);
 
-      resolver(parent, args, { resolverCache: cacheMock }).then(actual => {
-        expect(actual).toEqual(uncachedValue);
+      return resolver(parent, args, {
+        resolverCache: cacheMock,
+      }).then(() => {
+        expect(cacheMock.set).toHaveBeenCalledTimes(1);
       });
     });
   });
