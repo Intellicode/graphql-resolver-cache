@@ -6,7 +6,7 @@
   "scripts": {
     "format": "prettier  --trailing-comma es5 --single-quote --write src/**/*.js",
     "lint": "eslint src",
-    "test": "jest",
+    "test": "jest --coverage",
     "precommit": "lint-staged"
   },
   "lint-staged": {
