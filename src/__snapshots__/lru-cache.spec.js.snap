@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lru .constructor() constructs the cache properly 1`] = `
+LRU {
+  "cache": LRUCache {
+    Symbol(max): 10,
+    Symbol(lengthCalculator): [Function],
+    Symbol(allowStale): false,
+    Symbol(maxAge): 0,
+    Symbol(dispose): undefined,
+    Symbol(noDisposeOnSet): false,
+    Symbol(cache): Map {},
+    Symbol(lruList): Yallist {
+      "head": null,
+      "length": 0,
+      "tail": null,
+    },
+    Symbol(length): 0,
+  },
+}
+`;
