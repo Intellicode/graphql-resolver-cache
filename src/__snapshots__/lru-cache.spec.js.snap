@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Lru .constructor() constructs the cache properly 1`] = `
-LRU {
+LruCache {
   "cache": LRUCache {
     Symbol(max): 10,
     Symbol(lengthCalculator): [Function],
