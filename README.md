@@ -16,7 +16,39 @@ $ npm install graphql-resolver-cache --save
 
 # Configuration
 
-TODO
+Add a cache to your Graphql middleware:
+
+```
+import express from 'express';
+import bodyParser from 'body-parser';
+import { graphqlExpress } from 'apollo-server-express';
+import { LruCache } from 'graphql-resolver-cache';
+
+const myGraphQLSchema = // ... define or import your schema here!
+const PORT = 3000;
+
+const app = express();
+const resolverCache = new LruCache();
+
+// bodyParser is needed just for POST.
+app.use('/graphql', bodyParser.json(), graphqlExpress({ 
+  schema: myGraphQLSchema,
+  context: { resolverCache }
+}));
+
+app.listen(PORT);
+```
+
+Wrap your resolver in a cache function:
+
+```
+import { withCache } from 'graphql-resolver-cache';
+export default {
+  User: {
+    getFriends: withCache((root, args, context) => { /* logic */ }),
+  },
+};
+```
 
 [npm-url]: https://npmjs.org/package/graphql-resolver-cache
 [npm-image]: http://img.shields.io/npm/v/graphql-resolver-cache.svg?style=flat-square
