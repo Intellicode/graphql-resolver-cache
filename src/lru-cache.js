@@ -1,7 +1,8 @@
 const lru = require('lru-cache');
 
 module.exports = class LruCache {
-  constructor({ maxItems }) {
+  constructor(options) {
+    const maxItems = options && options.maxItems
     this.cache = lru(maxItems);
   }
 
