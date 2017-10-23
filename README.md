@@ -18,7 +18,7 @@ $ npm install graphql-resolver-cache --save
 
 Add a cache to your Graphql middleware:
 
-```
+```js
 import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlExpress } from 'apollo-server-express';
@@ -41,7 +41,7 @@ app.listen(PORT);
 
 Wrap your resolver in a cache function:
 
-```
+```js
 import { withCache } from 'graphql-resolver-cache';
 export default {
   User: {
