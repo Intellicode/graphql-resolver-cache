@@ -2,7 +2,7 @@ const hash = require('object-hash');
 
 const toSafeObject = obj => JSON.parse(JSON.stringify(obj || {}));
 
-function cache(func, options) {
+function cache(func, options = {}) {
   return (root, args, context) => {
     if (!context.resolverCache) {
       throw new Error('Missing resolverCache property on the Graphql context.');
