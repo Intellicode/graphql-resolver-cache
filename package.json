@@ -41,7 +41,7 @@
     "prettier": "^1.5.3"
   },
   "dependencies": {
-    "lru-cache": "^4.1.1",
+    "lru-cache": "^5.0.1",
     "object-hash": "^1.1.8"
   }
 }
